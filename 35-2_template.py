@@ -19,7 +19,7 @@ Bitte suchen Sie aus der Sympy-Dokumentation die nötigen Befehle.
 Es würde bestimmt auch andere Lösungswege geben, aber die Übung dient dazu,
 dass Sie sich mit solchen Dokumentationen vertraut machen.
 """
-# %%
+from textwrap import wrap
 import sympy as sp
 t, a, b = sp.symbols('t a b')  # Hinweis: Erstellen sie rein reelle Symbole
 
@@ -43,13 +43,12 @@ T = v/s
 
 # Für den Hauptnormaleneinheitsvektor und die Krümmung wäre es sinnvoll einen zwischenvariable auszurechnen
 # Hauptnormaleneinheitsvektor
-N = 
-
-sp.pprint(T)
-# %%
+T_diff = sp.diff(T, t)
+N = T_diff / sp.sqrt(T_diff.dot(T_diff))
 
 # Krümmung
-k = TODO
+K = T_diff / s
+k = sp.sqrt(K.dot(K))
 
 print("Bahngeschwindigkeit s:")
 sp.pprint(s)
@@ -58,10 +57,17 @@ print("\n\nBeschleunigung a:")
 sp.pprint(a)
 
 print("\n\nTangenteneinheitsvektor T:")
+g = sp.simplify(sp.gcd(tuple(T)))   # Get common factor
+T = sp.MatMul(g, (T/g), evaluate=False)
 sp.pprint(T)
 
 print("\n\nHauptnormaleneinheitsvektor N:")
-sp.pprint(TODO)  # Geben Sie den Hauptnormaleneinheitsvektor vereinfacht aus
+N.simplify()
+g = sp.simplify(sp.gcd(tuple(N)))   # Get common factor
+N = sp.MatMul(g, (N/g), evaluate=False)
+# Geben Sie den Hauptnormaleneinheitsvektor vereinfacht aus
+sp.pprint(N, wrap_line=False)
+
 
 print("\n\nKrümmung k:")
-sp.pprint(k)  # Geben Sie die Krümmung vereinfacht aus
+sp.pprint(sp.simplify(k))  # Geben Sie die Krümmung vereinfacht aus
