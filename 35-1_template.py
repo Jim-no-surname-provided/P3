@@ -40,7 +40,7 @@ eq = [sp.Eq(x.subs(t, 0),x0),
 
 #Berechnung der Startbedingungen
 C1, C2 = list(sp.linsolve(eq, sp.symbols('C1'), sp.symbols('C2')))[0]
-x = TODO
+x = x.subs(sp.symbols('C1'), C1).subs(sp.symbols('C2'), C2)
 # %%
 
 # 3 Beispiele mit verschiedenen Werten für c und d
