@@ -43,9 +43,9 @@ C1, C2 = list(sp.linsolve(TODO))[0]
 x = TODO
 
 # 3 Beispiele mit verschiedenen Werten für c und d
-x1 = x.subs(c,0.36).subs(d,0.02) 
-x2 = x.subs(c,0.01).subs(d,0.021)
-x3 = x.subs(c,0.21).subs(d,0.02)
+x2 = x.subs(c, 0.01).subs(d, 0.021)
+x1 = x.subs(c, 0.36).subs(d, 0.02)
+x3 = x.subs(c, 0.21).subs(d, 0.02)
 
 
 # Lösungsplots für t=0..5
