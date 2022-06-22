@@ -1,47 +1,54 @@
 """
 @ authors: 
     
-Autor:
-Matr.Nr.:
+Autor: Helmut Joaquín Pfeffer
+Matr.Nr.: k12105862
 
-Autor:
-Matr.Nr.:
+Autor: Rainer Grobauer
+Matr.Nr.: k1238053
 
-Autor:
-Matr.Nr.:
+Autor: Hannes Maislinger
+Matr.Nr.: k01455994
 
-Autor:
-Matr.Nr.:
+Autor: Zinedin Puškar
+Matr.Nr.: k12043388
 
 Aufgabe 35.2 der Aufgabensammlung
+
 Bitte suchen Sie aus der Sympy-Dokumentation die nötigen Befehle.
 Es würde bestimmt auch andere Lösungswege geben, aber die Übung dient dazu,
 dass Sie sich mit solchen Dokumentationen vertraut machen.
 """
-
+# %%
 import sympy as sp
-t, a, b  = sp.symbols( TODO ) #Hinweis: Erstellen sie rein reelle Symbole
+t, a, b = sp.symbols('t a b')  # Hinweis: Erstellen sie rein reelle Symbole
 
-#Richtungsvektor
-x = TODO #Hinweis: erstellen sie eine Matrix
+# Richtungsvektor
+x = sp.Matrix([
+    a*sp.cos(t),
+    b*sp.sin(t)
+])  # Hinweis: erstellen sie eine Matrix
 
-#Geschwindigkeitsvektor
-v = TODO
+# Geschwindigkeitsvektor
+v = sp.diff(x, t)
 
-#Bahngeschwindigkeit
-s = TODO 
+# Bahngeschwindigkeit
+s = sp.sqrt(v.dot(v))
 
-#Beschleunigung
-a = TODO
+# Beschleunigung
+a = sp.diff(v, t)
 
-#Tangenteneinheitsvektor
-T = TODO
+# Tangenteneinheitsvektor
+T = v/s
 
-#Für den Hauptnormaleneinheitsvektor udn die Krümmung wäre es sinnvoll einen zwischenvariable auszurechnen
+# Für den Hauptnormaleneinheitsvektor und die Krümmung wäre es sinnvoll einen zwischenvariable auszurechnen
 # Hauptnormaleneinheitsvektor
-N = TODO
+N = 
 
-#Krümmung
+sp.pprint(T)
+# %%
+
+# Krümmung
 k = TODO
 
 print("Bahngeschwindigkeit s:")
@@ -54,8 +61,7 @@ print("\n\nTangenteneinheitsvektor T:")
 sp.pprint(T)
 
 print("\n\nHauptnormaleneinheitsvektor N:")
-sp.pprint(TODO) #Geben Sie den Hauptnormaleneinheitsvektor vereinfacht aus
+sp.pprint(TODO)  # Geben Sie den Hauptnormaleneinheitsvektor vereinfacht aus
 
 print("\n\nKrümmung k:")
-sp.pprint(k) #Geben Sie die Krümmung vereinfacht aus
-
+sp.pprint(k)  # Geben Sie die Krümmung vereinfacht aus
