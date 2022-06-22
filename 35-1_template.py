@@ -29,19 +29,19 @@ x0 = 5e-5
 
 # Definition der DGL und seiner Lösung
 f = m*sp.diff(x, t, 2) + d*sp.diff(x, t) + c*x  # DGL
-x = sp.dsolve(f, x)  # Lösung - Hinweis: dsolve
+x = sp.dsolve(f, x).rhs      # Lösung - Hinweis: dsolve
 
 print("Differentialgleichung:")
 sp.pprint(f)
 
 #Liste mit den Gleichungen des GLS
 eq = [sp.Eq(x.subs(t, 0),x0),
-      sp.Eq(x.diff(t, 1).subs(t, 0), 0)]
-
+      sp.Eq(sp.diff(x, t, 1).subs(t, 0), 0)]
 
 #Berechnung der Startbedingungen
-C1, C2 = list(sp.linsolve(TODO))[0]
+C1, C2 = list(sp.linsolve(eq, sp.symbols('C1'), sp.symbols('C2')))[0]
 x = TODO
+# %%
 
 # 3 Beispiele mit verschiedenen Werten für c und d
 x2 = x.subs(c, 0.01).subs(d, 0.021)
