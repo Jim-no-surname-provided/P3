@@ -18,8 +18,9 @@ Bitte suchen Sie aus der Sympy-Dokumentation die nötigen Befehle.
 Es würde bestimmt auch andere Lösungswege geben, aber die Übung dient dazu,
 dass Sie sich mit solchen Dokumentationen vertraut machen.
 """
+# %%
 import sympy as sp
-from sympy.abc import c,d,t
+from sympy.abc import c, d, t
 x = sp.Function('x')(t)
 
 # Wahl geeignete Masse und Startpunkt
@@ -27,8 +28,8 @@ m = 10e-3
 x0 = 5e-5
 
 # Definition der DGL und seiner Lösung
-f = TODO #DGL
-x = TODO # Lösung - Hinweis: dsolve
+f = m*sp.diff(x, t, 2) + d*sp.diff(x, t) + c*x  # DGL
+x = sp.dsolve(f, x)  # Lösung - Hinweis: dsolve
 
 print("Differentialgleichung:")
 sp.pprint(f)
