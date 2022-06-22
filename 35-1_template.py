@@ -33,11 +33,11 @@ x = sp.dsolve(f, x).rhs      # Lösung - Hinweis: dsolve
 print("Differentialgleichung:")
 sp.pprint(f)
 
-#Liste mit den Gleichungen des GLS
-eq = [sp.Eq(x.subs(t, 0),x0),
+# Liste mit den Gleichungen des GLS
+eq = [sp.Eq(x.subs(t, 0), x0),
       sp.Eq(sp.diff(x, t, 1).subs(t, 0), 0)]
 
-#Berechnung der Startbedingungen
+# Berechnung der Startbedingungen
 C1, C2 = list(sp.linsolve(eq, sp.symbols('C1'), sp.symbols('C2')))[0]
 x = x.subs(sp.symbols('C1'), C1).subs(sp.symbols('C2'), C2)
 
@@ -48,7 +48,10 @@ x3 = x.subs(c, 0.21).subs(d, 0.02)
 
 
 # Lösungsplots für t=0..5
-p = sp.plot((x1, (t, 0, 5)), (x2, (t, 0, 5)), (x3, (t, 0, 5)), show=False)
+p = sp.plot((x1, (t, 0, 5)),
+            (x2, (t, 0, 5)),
+            (x3, (t, 0, 5)),
+            show=False)
 p[0].line_color = "orange"
 p[1].line_color = 'green'
 p.show()
