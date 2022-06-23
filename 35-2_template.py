@@ -57,12 +57,14 @@ print("\n\nBeschleunigung a:")
 sp.pprint(a)
 
 print("\n\nTangenteneinheitsvektor T:")
+# Inspired in: https://stackoverflow.com/a/39692039/16790196
 g = sp.simplify(sp.gcd(tuple(T)))   # Get common factor
 T = sp.MatMul(g, (T/g), evaluate=False)
 sp.pprint(T)
 
 print("\n\nHauptnormaleneinheitsvektor N:")
 N.simplify()
+# Inspired in: https://stackoverflow.com/a/39692039/16790196
 g = sp.simplify(sp.gcd(tuple(N)))   # Get common factor
 N = sp.MatMul(g, (N/g), evaluate=False)
 # Geben Sie den Hauptnormaleneinheitsvektor vereinfacht aus
