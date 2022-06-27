@@ -85,16 +85,19 @@ Das nachfolgende Programm soll dieser Schritte ausführen.
 approx = 2
 
 # funktion
-f = TODO  # übertragen Sie die Angabe
+f = x*sp.sin(y) + y*sp.sin(x)  # übertragen Sie die Angabe
 
 # Entwicklungspunkt
-x0 = TODO  # übertragen Sie die Angabe
-y0 = TODO  # übertragen Sie die Angabe
+x0 = sp.pi / 2  # übertragen Sie die Angabe
+y0 = 0          # übertragen Sie die Angabe
 
 print('Angabe: \nf(x,y) = {}'.format(sp.pretty(f)))
-
 print("\nRichtungsvektor: ")
-v = TODO  # Hinweis: Geben sie den Richtungsvektor als Matrix an
+v = sp.Matrix([
+    sp.Derivative(f, x).doit(),
+    sp.Derivative(f, y).doit(),
+])  # Hinweis: Geben sie den Richtungsvektor als Matrix an
+
 sp.pprint(v)
 
 # Lösungsterm initialisieren
@@ -108,8 +111,8 @@ for k in range(approx+1):
     i, termsk = 0, 0
 
     while i <= k:
-        partdevf = sp.diff(TODO)  # Ermittlung der partiellen Ableitung
-        partdevfAt = partdevf.TODO  # Einsetzen des Entwicklingspunktes in die Ableitung
+        partdevf = sp.diff(f, x)  # Ermittlung der partiellen Ableitung
+        partdevfAt = partdevf.subs(x, x0).subs(y, y0)  # Einsetzen des Entwicklungspunktes in die Ableitung
         add = bcl(k)[i] * TODO  # Bestimmung des Terms inkl. Häufigkeit
         termsk += add  # Ergänzung zu den Termen der Approximation vom Grad k
         i += 1
