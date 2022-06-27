@@ -20,11 +20,11 @@ Es würde bestimmt auch andere Lösungswege geben, aber die Übung dient dazu,
 dass Sie sich mit solchen Dokumentationen vertraut machen.
 """
 
-#%% Version 2 - Beschleunigte Berechnung des Taylorpolynoms n-ten Grades unter Ausnutzung
-#%% des Satz von Schwartz und der Binomialkoeffizienten (Pascalsches Dreieck)
+# %% Version 2 - Beschleunigte Berechnung des Taylorpolynoms n-ten Grades unter Ausnutzung
+# %% des Satz von Schwartz und der Binomialkoeffizienten (Pascalsches Dreieck)
 import sympy as sp
-from sympy.abc import x,y 
-from sympy.ntheory import binomial_coefficients_list as bcl #für Pascalsches Dreieck
+from sympy.abc import x, y
+from sympy.ntheory import binomial_coefficients_list as bcl  # für Pascalsches Dreieck
 """
 Geht man davon aus, dass eine Funktion f(x,y) von 2 Variablen abhängt,
 muss man diese für das Taylorpolynom auch nach beiden Variablen ableiten.
@@ -84,41 +84,41 @@ Das nachfolgende Programm soll dieser Schritte ausführen.
 # Festleung des Grads des Taylorpolynoms
 approx = 2
 
-#funktion
-f = TODO #übertragen Sie die Angabe
+# funktion
+f = TODO  # übertragen Sie die Angabe
 
-#Entwicklungspunkt
-x0 = TODO #übertragen Sie die Angabe
-y0 = TODO #übertragen Sie die Angabe
+# Entwicklungspunkt
+x0 = TODO  # übertragen Sie die Angabe
+y0 = TODO  # übertragen Sie die Angabe
 
 print('Angabe: \nf(x,y) = {}'.format(sp.pretty(f)))
 
 print("\nRichtungsvektor: ")
-v = TODO #Hinweis: Geben sie den Richtungsvektor als Matrix an
+v = TODO  # Hinweis: Geben sie den Richtungsvektor als Matrix an
 sp.pprint(v)
 
-#Lösungsterm initialisieren
+# Lösungsterm initialisieren
 solution = 0
 
-#für jeden Grad des Taylerpolynomes wird ein Term addiert
+# für jeden Grad des Taylerpolynomes wird ein Term addiert
 for k in range(approx+1):
-    
-  #Berechnung von dem nächsten Näherungsterm mithilfe von dem Pascalschen Dreieck 
-  #und Ausnutzung von Satz von Schwartz
+
+  # Berechnung von dem nächsten Näherungsterm mithilfe von dem Pascalschen Dreieck
+  # und Ausnutzung von Satz von Schwartz
     i, termsk = 0, 0
-    
+
     while i <= k:
-        partdevf = sp.diff(TODO) # Ermittlung der partiellen Ableitung
-        partdevfAt = partdevf.TODO #Einsetzen des Entwicklingspunktes in die Ableitung
-        add = bcl(k)[i] * TODO # Bestimmung des Terms inkl. Häufigkeit 
-        termsk += add # Ergänzung zu den Termen der Approximation vom Grad k
+        partdevf = sp.diff(TODO)  # Ermittlung der partiellen Ableitung
+        partdevfAt = partdevf.TODO  # Einsetzen des Entwicklingspunktes in die Ableitung
+        add = bcl(k)[i] * TODO  # Bestimmung des Terms inkl. Häufigkeit
+        termsk += add  # Ergänzung zu den Termen der Approximation vom Grad k
         i += 1
-        
-    #Addition der normierten Terme der Approximation vom Grad k zum Taylorpolynom vom Grad k-1, Hinweis sp.factorial
+
+    # Addition der normierten Terme der Approximation vom Grad k zum Taylorpolynom vom Grad k-1, Hinweis sp.factorial
     solution += TODO
 
 solution = solution.simplify()
 
-#Rückgabe des Ergebnisses 
+# Rückgabe des Ergebnisses
 print("\nTaylorpolynom vom Grad {}: ".format(approx))
 sp.pprint(solution)
