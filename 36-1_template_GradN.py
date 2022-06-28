@@ -111,7 +111,7 @@ for k in range(approx+1):
     i, termsk = 0, 0
 
     while i <= k:
-        partdevf = sp.diff(f, x)  # Ermittlung der partiellen Ableitung
+        partdevf = sp.diff(f, x, TODO, y, TODO) # Ermittlung der partiellen Ableitung
         partdevfAt = partdevf.subs(x, x0).subs(y, y0)  # Einsetzen des Entwicklungspunktes in die Ableitung
         add = bcl(k)[i] * TODO  # Bestimmung des Terms inkl. Häufigkeit
         termsk += add  # Ergänzung zu den Termen der Approximation vom Grad k
