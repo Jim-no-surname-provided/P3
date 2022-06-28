@@ -111,14 +111,14 @@ for k in range(approx+1):
     i, termsk = 0, 0
 
     while i <= k:
-        partdevf = sp.diff(f, x, TODO, y, TODO) # Ermittlung der partiellen Ableitung
+        partdevf = sp.diff(f, x, i, y, k - i) # Ermittlung der partiellen Ableitung
         partdevfAt = partdevf.subs(x, x0).subs(y, y0)  # Einsetzen des Entwicklungspunktes in die Ableitung
-        add = bcl(k)[i] * TODO  # Bestimmung des Terms inkl. Häufigkeit
+        add = bcl(k)[i] * partdevfAt * ( (x -x0)**i ) * ( (y -y0)**(k - i) )    # Bestimmung des Terms inkl. Häufigkeit
         termsk += add  # Ergänzung zu den Termen der Approximation vom Grad k
         i += 1
 
     # Addition der normierten Terme der Approximation vom Grad k zum Taylorpolynom vom Grad k-1, Hinweis sp.factorial
-    solution += TODO
+    solution += termsk / sp.factorial(k)
 
 solution = solution.simplify()
 
